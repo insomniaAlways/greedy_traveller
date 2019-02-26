@@ -1,21 +1,17 @@
 import React from "react";
-import { View, Text } from "react-native";
-import { createStackNavigator, createAppContainer } from "react-navigation";
+import { createAppContainer } from "react-navigation";
+import AppNavigator from './src/screens/AppNavigator';
 
-class HomeScreen extends React.Component {
+const AppContainer = createAppContainer(AppNavigator);
+
+export default class App extends React.Component {
+  onNavigationChange = (prevState, newState, action) => {
+    console.log(prevState, newState, action)
+  }
   render() {
-    return (
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <Text>Home Screen</Text>
-      </View>
-    );
+    return <AppContainer
+        onNavigationStateChange={this.onNavigationChange}
+        uriPrefix="/app"
+      />;
   }
 }
-
-const AppNavigator = createStackNavigator({
-  Home: {
-    screen: HomeScreen
-  }
-});
-
-export default createAppContainer(AppNavigator);
