@@ -1,22 +1,20 @@
 import React, { Component } from 'React';
-import { View, Text, StyleSheet, Button } from 'react-native';
+import { View, Text, StyleSheet, Button, TouchableOpacity } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
 export default class HomeScreen extends Component {
-  static navigationOptions = {
-    title: 'Home'
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title: 'Home',
+      headerRight: (
+        <View style={{margin: 8}}>
+          <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
+            <Icon size={25} name="fa-bars" color="white"></Icon>
+          </TouchableOpacity>
+        </View>
+      ),
+    }
   };
-
-  // componentDidMount() {
-  //   this.props.navigation.setParams({ increaseCount: this._increaseCount, count: this.state.count });
-  // }
-
-  state = {
-    count: 0,
-  };
-
-  // _increaseCount = () => {
-  //   this.setState({ count: this.state.count + 1 });
-  // };
 
   render() {
     return (

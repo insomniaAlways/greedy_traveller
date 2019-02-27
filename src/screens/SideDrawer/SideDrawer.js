@@ -1,25 +1,18 @@
 import React, { Component } from 'react';
 import { View, Text, Dimensions, StyleSheet, TouchableOpacity, Platform } from 'react-native';
 import Icons from 'react-native-vector-icons/Ionicons';
-import Navigation from 'react-native-navigation';
 
 class SideDrawer extends Component {
-  selectedTab(tab) {
-    debugger
-    Navigation.push('mainStack', {
-      component: {
-        name: `gt.${tab}`,
-        options: {
-          sideMenu: {
-            left: {
-              visible: false,
-              enabled: false
-            }
-          }
-        }
+  static navigationOptions = ({ navigation }) => {
+    return Promise.resolve({
+      icon: Icons.getImageSource('menu', 30, '#fff')
+    }).then((icon) => {
+      return {
+        drawerLabel: 'SideDrawer',
+        drawerIcon: icon.icon
       }
-    });
-  } 
+    })
+  };   
   
   render () {
     return (

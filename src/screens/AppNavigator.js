@@ -1,23 +1,41 @@
-import { createStackNavigator } from "react-navigation";
+import { createStackNavigator, createDrawerNavigator } from "react-navigation";
 import HomeScreen from './HomeScreen/index';
 import MovieScreen from './MovieScreens/index';
 
-const AppNavigator = createStackNavigator(
+const stackHeaderDefaultConfiguration = {
+  headerStyle: {
+    backgroundColor: '#3BA0FF',
+  },
+  headerTintColor: '#fff',
+  headerTitleStyle: {
+    fontWeight: 'bold',
+  },
+}
+
+const MoviesStackNavigator = createStackNavigator(
   {
-    Home:  HomeScreen,
-    Movies: MovieScreen,
+    Movies: MovieScreen
   },
   {
-    initialRouteName: "Home",
-    defaultNavigationOptions: {
-      headerStyle: {
-        backgroundColor: '#3BA0FF',
-      },
-      headerTintColor: '#fff',
-      headerTitleStyle: {
-        fontWeight: 'bold',
-      },
-    }
+    initialRouteName: "Movies",
+    defaultNavigationOptions: stackHeaderDefaultConfiguration
+  }
+)
+
+const HomeStackNavigator = createStackNavigator(
+  {
+    Root: HomeScreen
+  },
+  {
+    initialRouteName: "Root",
+    defaultNavigationOptions: stackHeaderDefaultConfiguration
+  }
+)
+
+const AppNavigator = createDrawerNavigator(
+  {
+    Home:  HomeStackNavigator,
+    Movies: MoviesStackNavigator,
   }
 );
 
