@@ -1,0 +1,1 @@
+export { setMovies } from './movies/index';

@@ -36,6 +36,8 @@ const AppNavigator = createDrawerNavigator(
   {
     Home:  HomeStackNavigator,
     Movies: MoviesStackNavigator,
+  }, {
+    initialRouteName: 'Movies'
   }
 );
 

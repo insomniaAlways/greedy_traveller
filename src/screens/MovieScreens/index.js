@@ -1,6 +1,9 @@
 import React, { Component } from 'React';
 import { View, Text, Button, TouchableOpacity, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { getMovies } from '../../../store/actions/index';
+import { movies } from '../../../store/models/index'
+import ListView from '../../components/ListView/ListView'
 
 export default class MovieScreen extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -15,10 +18,27 @@ export default class MovieScreen extends Component {
       ),
     }
   };
+
+  state = {
+    model: movies
+  }
+
+  itemSelectedHandler = (args) => {
+
+  }
+
+  componentDidMount() {
+    Promise.resolve(getMovies())
+    .then(() => {
+      this.setState({
+        model: movies
+      })
+    })
+  }
   render() {
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Movies Screen</Text>
+      <View>
+        <ListView values={this.state.model}/>
       </View>
     )
   }

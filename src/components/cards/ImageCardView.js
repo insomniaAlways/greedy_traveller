@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Image } from 'react-native';
 
 export default class ImageCard extends Component {
   render() {
+    debugger
     return (
       <View style={styles.container}>
         <View style={styles.imageContainer}>

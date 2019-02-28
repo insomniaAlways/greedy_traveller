@@ -3,16 +3,15 @@ import { StyleSheet, FlatList } from 'react-native';
 
 import ImageCard from '../cards/ImageCardView';
 
-const placeList = props => {
-
+const ListView = props => {
 	return (
 		<FlatList 
 			style={styles.listContainer}
-			data={props.movies}
+			data={props.values}
 			renderItem={(info) => (
 				<ImageCard
 						name={info.item.name}
-						image={info.item.image}
+						image={info.item.thumbnail}
 						onItemPressed={() =>  alert('selected')}
 				/>      
 			)}
@@ -26,4 +25,4 @@ const styles = StyleSheet.create({
 	}
 });
 
-export default placeList;
+export default ListView;
